@@ -1,0 +1,4 @@
+google-cloud-text-to-speech
+pytest
+pydub
+numpy

@@ -1,0 +1,24 @@
+# filepath: /Users/nicoladimarco/code/storellai-audiobook/.gitignore
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+*.env
+*.DS_Store
+
+# Generated audio files
+# This path is relative to the .gitignore file (which is at the project root)
+src/audio/
+
+# Google Cloud credentials
+# IMPORTANT: If your 'storellai-c5ff1089f6b5.json' key file is located
+# OUTSIDE this 'story-to-mp3-audiobook-generator' directory (e.g., in the parent 'storellai-audiobook' folder),
+# then it is NOT part of this Git repository and does not need to be listed here.
+# If you were to move the key file INSIDE this 'story-to-mp3-audiobook-generator'
+# directory (e.g., to its root), then you would add its name here:
+storellai-c5ff1089f6b5.json
+
+# VS Code
+.vscode/

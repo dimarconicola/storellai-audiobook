@@ -1,0 +1,21 @@
+{
+  "id": "000000",
+  "character": "Character Name",
+  "location": "Story Location",
+  "stories": [
+    {
+      "id": 1,
+      "title": "Story Title 1",
+      "tone": "calm",
+      "length_words": 350,
+      "text": "The full text of the story goes here..."
+    },
+    {
+      "id": 2,
+      "title": "Story Title 2",
+      "tone": "adventurous",
+      "length_words": 352,
+      "text": "The full text of the second story..."
+    }
+  ]
+}
