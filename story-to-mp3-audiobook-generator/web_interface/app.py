@@ -1,4 +1,5 @@
 import os
+import re # Added for sequential card ID generation
 
 # SET GOOGLE APPLICATION CREDENTIALS
 # The key file is at the workspace root.
@@ -34,7 +35,7 @@ else:
 
 
 import sys
-import uuid
+import uuid # Keep for now, though not used for card_id
 import json
 import secrets # Added secrets for session key
 
@@ -77,7 +78,7 @@ def index():
 # session_id here will be used as card_id
 @app.route(f'/audio_files/{WEB_AUDIO_SERVE_ROOT_REL}/<path:card_id>/<path:filename>')
 def serve_web_audio(card_id, filename):
-    directory = os.path.join(WEB_AUDIO_OUTPUT_DIR_ABS, card_id)
+    directory = os.path.join(WEB_AUDIO_OUTPUT_DIR_ABS, card_id) # card_id here will be "000000", "000001", etc.
     app.logger.info(f"Serving audio file from: {directory}, filename: {filename}")
     return send_from_directory(directory, filename)
 
@@ -120,10 +121,22 @@ def api_generate_stories():
             # We'll pass the provided tones, and let story_llm handle it.
             app.logger.warning(f"Tones not provided or mismatch num_stories. Tones: {tones}, Num Stories: {num_stories}")
 
-
-        card_id = f"web_{str(uuid.uuid4())}"
+        # Generate sequential card ID
+        max_id_num = -1
+        if os.path.exists(STORIES_OUTPUT_DIR):
+            for filename in os.listdir(STORIES_OUTPUT_DIR):
+                # Match filenames like "card_000000.json"
+                match = re.fullmatch(r"card_(\d{6})\.json", filename)
+                if match:
+                    current_id_num = int(match.group(1))
+                    if current_id_num > max_id_num:
+                        max_id_num = current_id_num
         
-        app.logger.info(f"Generating {num_stories} stories for card {card_id} with tones: {tones}")
+        next_id_num = max_id_num + 1
+        # card_id will now be the numeric string, e.g., "000000", "000001"
+        card_id = f"{next_id_num:06d}" 
+        
+        app.logger.info(f"Generating {num_stories} stories for card ID {card_id} with tones: {tones}")
 
         # generate_multiple_stories expects a list of tones.
         # If generating a single story, wrap its tone in a list.
@@ -302,40 +315,32 @@ def api_generate_audio_for_story():
 @app.route('/api/create_card_file', methods=['POST'])
 def api_create_card_file():
     try:
-        data = request.get_json()
-        card_id_from_request = data.get('card_id') if data else None # card_id can be passed in request body
+        # card_id is expected to be the numeric string like "000000" from the session
+        current_card_data = session.get('current_card_data')
+        if not current_card_data:
+            return jsonify({"error": "No card data found in session. Please generate stories first."}), 400
 
-        current_card_session_data = session.get('current_card_data')
-        
-        # Determine the definitive card_id to use
-        if card_id_from_request:
-            if not current_card_session_data or current_card_session_data.get('card_id') != card_id_from_request:
-                app.logger.error(f"Card ID from request '{card_id_from_request}' does not match session card ID or session is empty.")
-                # Potentially load from a file if we had such a system, but for now, rely on session or explicit full data.
-                return jsonify({"error": "Card ID mismatch or session data missing for requested card_id."}), 404
-            card_id_to_use = card_id_from_request
-            card_data_source = current_card_session_data
-        elif current_card_session_data:
-            card_id_to_use = current_card_session_data.get('card_id')
-            card_data_source = current_card_session_data
-            if not card_id_to_use:
-                 return jsonify({"error": "No card_id found in session."}), 400
-        else:
-            return jsonify({"error": "No card_id provided and no card data in session."}), 400
+        card_id = current_card_data.get('card_id') # This will be "000000", "000001", etc.
+        if not card_id:
+            return jsonify({"error": "Card ID not found in session data."}), 400
 
-        # Construct the card JSON in the batch pipeline format (matching card_000000.json)
-        card_json_to_save = {
-            "id": card_data_source['card_id'], # Use the generated card_id (e.g., "web_uuid" or "000000")
-            "character": card_data_source['character'], # Changed from character_idea
-            "location": card_data_source['context_location'], # Changed from context_location_idea
-            # Removed: age_target, num_words_target, language, voice_requested to match example
+        # Construct filename with "card_" prefix
+        output_filename = f"card_{card_id}.json" # e.g., card_000000.json
+        output_filepath = os.path.join(STORIES_OUTPUT_DIR, output_filename)
+
+        # Prepare data for JSON output, ensuring it matches card_000000.json structure
+        # The top-level "id" field should be the numeric card_id string
+        output_data = {
+            "id": card_id, 
+            "character": current_card_data.get("character"),
+            "location": current_card_data.get("context_location"),
             "stories": []
         }
 
-        for story_detail in card_data_source['stories_details']:
-            word_count = story_detail.get('validation', {}).get('word_count', card_data_source.get('num_words')) # Fallback to target
+        for story_detail in current_card_data['stories_details']:
+            word_count = story_detail.get('validation', {}).get('word_count', current_card_data.get('num_words')) # Fallback to target
             
-            card_json_to_save['stories'].append({
+            output_data['stories'].append({
                 "id": story_detail['story_number'], # Use 1-indexed story_number as integer
                 "title": story_detail['title'],
                 "tone": story_detail['tone'],
@@ -345,11 +350,11 @@ def api_create_card_file():
         
         # File naming: use the card_id to ensure uniqueness and consistency
         # The batch pipeline expects files like card_000000.json. We'll use card_<card_id>.json
-        card_file_name = f"card_{card_data_source['card_id']}.json"
+        card_file_name = f"card_{current_card_data['card_id']}.json"
         card_json_path_abs = os.path.join(STORIES_OUTPUT_DIR, card_file_name)
         
         with open(card_json_path_abs, 'w', encoding='utf-8') as f:
-            json.dump(card_json_to_save, f, ensure_ascii=False, indent=4)
+            json.dump(output_data, f, ensure_ascii=False, indent=4)
         
         app.logger.info(f"Card file created: {card_json_path_abs}")
 

@@ -1,0 +1,28 @@
+{
+    "id": "000000",
+    "character": "Popò, una cacca curiosa e un po' birichina, che ha imparato a parlare e sogna di vivere avventure incredibili.",
+    "location": "La colorata e rumorosa città di Palermo, in Sicilia. Avventure a scuola.",
+    "stories": [
+        {
+            "id": 1,
+            "title": "Popò e il Mistero del Parco delle Bolle",
+            "tone": "calmo",
+            "length_words": 108,
+            "text": "Popò si aggirava fra i vialetti del Parco delle Bolle di Palermo, quando all'improvviso sentì un suono strano: \"Psssst!\". Si voltò e vide una grande bolla di sapone che fluttuava pigramente sopra una panchina. \"Ciao, Popò,\" disse la bolla con una voce musicale. \"Ho bisogno del tuo aiuto!\".\n\nCon la sua curiosità, Popò chiese: \"Cosa posso fare per te?\". La bolla spiegò che il vento dispettoso aveva nascosto le sue sorelle tra gli alberi del parco. Senza perdere tempo, Popò iniziò a cercare. Ogni bolla ritrovata riempiva il parco di risate delicate e colori danzanti. Popò, felice, si sedette a riposare, mentre il parco tornava calmo e sereno."
+        },
+        {
+            "id": 2,
+            "title": "Il Chiosco delle Meraviglie di Popò",
+            "tone": "misterioso",
+            "length_words": 94,
+            "text": "Popò stava rotolando lungo un marciapiede di Palermo, osservando tutto con i suoi occhietti curiosi. \"Cosa ci sarà dietro quell'angolo?\" si chiese, mentre una strana melodia lo attirava verso un piccolo chiosco. Ma non era un chiosco qualunque: era il Chiosco delle Meraviglie di Popò! Le finestre brillavano con luci multicolori e una voce gentile sussurrava: \"Chi osa entrare scoprirà mondi segreti...\" Popò non poteva resistere. \"Cosa ci sarà dentro? Avventure fantastiche? Dolci incantati?\" Con il cuore che batteva forte, decise di scoprirlo. E tu, cosa pensi che abbia trovato oltre quella porta misteriosa?"
+        },
+        {
+            "id": 3,
+            "title": "Popò e la Segreta Danza dei Tetti",
+            "tone": "calmo",
+            "length_words": 90,
+            "text": "Nella vivace città di Palermo, i tetti delle case danzano sotto il sole dorato, quasi come se raccontassero segreti antichi. Su uno di questi tetti, ecco Popò, una cacca curiosa con un sogno nel cuore. Si domandava cosa accadesse quando il vento accarezzava le tegole. \n\nPopò, con il suo spirito birichino, s'immaginava parte di una danza segreta tra gli scricchiolii delle tegole e il fruscio del vento. Sentiva una calma meravigliosa mentre, nella sua immaginazione, volteggiava tra le ombre delle nuvole, partecipando al ballo silenzioso che solo i tetti conoscevano."
+        }
+    ]
+}
