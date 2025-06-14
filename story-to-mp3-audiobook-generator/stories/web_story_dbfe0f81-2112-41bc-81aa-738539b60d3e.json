@@ -1,0 +1,15 @@
+{
+    "id": "web_dbfe0f81-2112-41bc-81aa-738539b60d3e",
+    "prompt_text": "cacca parlante che va a scuola a palermo",
+    "age_target": 5,
+    "num_words_target": 200,
+    "language": "it-IT",
+    "voice_requested": null,
+    "stories": [
+        {
+            "id": "1",
+            "title": "Una storia su cacca parlante che va a scuola a palermo",
+            "text": "C'era una volta una piccola cacca parlante di nome Carlotta che viveva in una casa nella città di Palermo. Un giorno, Carlotta decise di andare a scuola per imparare tante cose interessanti.\n\nQuando arrivò alla scuola, tutti rimasero sorpresi nel vedere una cacca parlante! Ma Carlotta non si lasciò scoraggiare e con un sorriso disse: \"Ciao, sono Carlotta e sono qui per imparare\".\n\nDurante la lezione, Carlotta ascoltò attentamente e fece tante domande intelligenti. I suoi compagni di classe alla fine della giornata si resero conto che non importa quanto tu sia diverso dagli altri, l'importante è essere curioso e desideroso di imparare.\n\nDopo la scuola, Carlotta tornò a casa felice e raccontò a tutti come era stata la sua giornata. La sua famiglia era così orgogliosa di lei per il coraggio dimostrato.\n\nDa quel giorno in poi, Carlotta continuò ad andare a scuola e diventò la migliore amica di tutti i suoi compagni di classe. E imparò che essere diversi è ciò che rende ognuno di noi speciale."
+        }
+    ]
+}

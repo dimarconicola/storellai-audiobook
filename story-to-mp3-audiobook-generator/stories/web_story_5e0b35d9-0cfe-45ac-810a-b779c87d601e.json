@@ -1,0 +1,16 @@
+{
+  "id": "web_5e0b35d9-0cfe-45ac-810a-b779c87d601e",
+  "character_idea": "Popò, una cacca curiosa e un po' birichina, che ha imparato a parlare e sogna di vivere avventure incredibili come andare sulla luna.",
+  "context_location_idea": "La colorata e rumorosa città di Palermo, in Sicilia. La storia potrebbe raccontare del primo giorno di Popò in una normalissima scuola elementare, tra lo stupore, le risate dei bambini e le sfide per integrarsi.",
+  "age_target": 5,
+  "num_words_target": 100,
+  "language": "it-IT",
+  "voice_requested": null,
+  "stories": [
+    {
+      "id": "1",
+      "title": "Una storia su Popò",
+      "text": "C'era una volta a Palermo, nella colorata Sicilia, una piccola cacca di nome Popò. Popò non era una cacca normale, sapeva parlare e aveva un sogno speciale: voleva andare sulla luna!\n\nUn giorno, Popò decise di esplorare una scuola elementare. I bambini rimasero stupiti nel sentirlo parlare, ma presto scopersero che era simpatico e divertente. Popò faceva ridere tutti con i suoi scherzi!\n\nNonostante qualche risata, alcuni bambini erano diffidenti. Ma Popò, con gentilezza e curiosità, li aiutò in piccole sfide e presto diventarono amici.\n\nAlla fine della giornata, Popò capì che anche sulla terra si potevano vivere avventure incredibili con gli amici. E così, con un sorriso, si preparò per la prossima avventura."
+    }
+  ]
+}

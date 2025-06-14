@@ -1,0 +1,15 @@
+{
+    "id": "web_d57ba18c-ef50-4925-a6ea-a70442b364e7",
+    "prompt_text": "cacca che parla e va a scuola a palermo",
+    "age_target": 5,
+    "num_words_target": 200,
+    "language": "it-IT",
+    "voice_requested": null,
+    "stories": [
+        {
+            "id": "1",
+            "title": "Una storia su cacca che parla e va a scuola a palermo",
+            "text": "C'era una volta a Palermo una cacca che parlava di nome Ciuf Ciuf. Ciuf Ciuf voleva tanto andare a scuola per imparare tante cose interessanti. Così un giorno, Ciuf Ciuf decise di mettersi in cammino verso la scuola.\n\nArrivato davanti alla scuola, Ciuf Ciuf incontrò tanti bambini felici che giocavano nel cortile. Tutti rimasero stupiti nel vedere una cacca che parlava! Ma Ciuf Ciuf spiegò che voleva imparare e chiese di poter partecipare alla lezione.\n\nLa maestra, sorpresa ma felice, accettò Ciuf Ciuf nella classe. Durante la lezione, Ciuf Ciuf ascoltava attentamente e faceva tante domande intelligenti. I bambini ridevano e si divertivano con lui.\n\nAlla fine della giornata, la maestra disse a Ciuf Ciuf che era stato un bravissimo alunno e che poteva tornare a scuola ogni giorno. Ciuf Ciuf era così contento di poter imparare nuove cose e fare nuovi amici!\n\nE così, Ciuf Ciuf continuò ad andare a scuola a Palermo, diventando il piccolo amico più"
+        }
+    ]
+}

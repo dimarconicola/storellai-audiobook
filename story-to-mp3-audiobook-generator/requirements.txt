@@ -1,4 +1,6 @@
-google-cloud-text-to-speech
+google-cloud-texttospeech
 pytest
 pydub
 numpy
+openai
+flask

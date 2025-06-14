@@ -1,0 +1,29 @@
+{
+    "id": "web_325372d7-360a-485e-b0cc-8858128299df",
+    "character_idea": "Popò, una cacca curiosa e un po' birichina, che ha imparato a parlare e sogna di vivere avventure incredibili.",
+    "context_location_idea": "La colorata e rumorosa città di Palermo, in Sicilia. Avventure a scuola.",
+    "age_target": 5,
+    "num_words_target": 100,
+    "language": "it-IT",
+    "voice_requested": null,
+    "stories": [
+        {
+            "id": "1",
+            "title": "Popò e il Misterioso Fiume di Stelle",
+            "text": "Popò stava galleggiando con grazia tra i marciapiedi di Palermo, quando scoprì un piccolo corso d'acqua brillante che scintillava sotto il sole. \"Ma guarda un po'!\" esclamò Popò, avvicinandosi con curiosità. Era il Misterioso Fiume di Stelle! Si diceva che chi scopriva il suo segreto poteva esprimere un desiderio.\n\nPopò si avvicinò e, con un soffio leggero, fece volare le stelle come coriandoli nel cielo. \"Desidero un viaggio tra le nuvole!\" mormorò. E così, il fiume prese vita, avvolgendolo in un abbraccio di stelle luminose, trasportandolo dolcemente verso nuove avventure.",
+            "tone": "calmo"
+        },
+        {
+            "id": "2",
+            "title": "La Ricetta Segreta del Signor Limoncello",
+            "text": "Popò saltellava allegro lungo le strade di Palermo, quando vide qualcosa di strano: una porta segreta nel muro di una vecchia scuola. \"Cosa ci sarà mai dietro?\" si chiese curiosamente. Entrò ed ecco il Signor Limoncello, un limone gigante con un sorriso enigmatico, che mescolava strani ingredienti in un calderone fumante. \"Vuoi scoprire la mia ricetta segreta?\" chiese il Signor Limoncello con un occhio strizzato. Popò annuì emozionato. Ma cosa poteva mai essere quella ricetta? Forse era un magico elisir di felicità? O un modo per far brillare il sole anche di notte? Popò non vedeva l'ora di scoprirlo!",
+            "tone": "misterioso"
+        },
+        {
+            "id": "3",
+            "title": "Popò e il Concerto dei Coperchi Ribelli",
+            "text": "Nella vivace città di Palermo, i tetti delle case risuonavano di note danzanti e di voci allegre. Tra quei tetti, nascosto tra i colori e i profumi della città, viveva Popò, una cacca curiosa e un po' birichina. Il suo sogno era partecipare al famoso Concerto dei Coperchi Ribelli, un evento magico dove i coperchi delle pentole, abbandonati nei cortili, si trasformavano in strumenti musicali.\n\nPopò, con il suo cuore tenero e il sorriso malizioso, si avvicinò ai coperchi. \"Posso unirmi a voi?\" chiese timidamente. I coperchi, colpiti dalla sua dolcezza, lo accolsero. E quella notte, sotto le stelle di Palermo, Popò danzò e cantò, trovando il suo posto nella melodia. Il suo sogno si era avverato, e il suo cuore era colmo di gioia.",
+            "tone": "tenero"
+        }
+    ]
+}

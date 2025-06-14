@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story & Audiobook Generator</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Generate a New Story and Audiobook</h1>
+        <form id="storyForm">
+            <div>
+                <label for="age">Child's Age (e.g., 5):</label>
+                <input type="number" id="age" name="age" min="1" max="12" required value="5">
+            </div>
+            <div>
+                <label for="character">Character Idea (e.g., a brave knight, a curious cat):</label>
+                <textarea id="character" name="character" rows="3" required>Popò, una cacca curiosa e un po' birichina, che ha imparato a parlare e sogna di vivere avventure incredibili.</textarea>
+            </div>
+            <div>
+                <label for="context_location">Context / Location Idea (e.g., a mysterious forest, a bustling city):</label>
+                <textarea id="context_location" name="context_location" rows="3" required>La colorata e rumorosa città di Palermo, in Sicilia. Avventure a scuola.</textarea>
+            </div>
+            <div>
+                <label for="words">Approximate Word Count (e.g., 200):</label>
+                <input type="number" id="words" name="words" min="50" max="1000" step="50" required value="100">
+            </div>
+            <div>
+                <label for="num_stories">Number of Stories to Generate:</label>
+                <input type="number" id="num_stories" name="num_stories" min="1" max="10" required value="3">
+                <small>Generate multiple variations of the same character and context (1-10 stories)</small>
+            </div>
+            <div>
+                <label for="language">Language:</label>
+                <select id="language" name="language">
+                    <option value="en-US">English (US)</option>
+                    <option value="it-IT" selected>Italian (Italy)</option>
+                    <option value="es-ES">Spanish (Spain)</option>
+                    <option value="fr-FR">French (France)</option>
+                    <option value="de-DE">German (Germany)</option>
+                    <!-- Add more languages as supported by Google TTS and your LLM -->
+                </select>
+            </div>
+            <div>
+                <label for="voice">Voice (Optional, defaults to a suitable voice for the language):</label>
+                <input type="text" id="voice" name="voice" placeholder="e.g., en-US-Wavenet-D">
+                <small>Leave blank for default. Refer to Google TTS documentation for voice names.</small>
+            </div>
+
+            <div id="toneSelectionArea" style="margin-bottom: 15px; display: flex; flex-direction: column;">
+                <!-- This will be populated by JavaScript -->
+            </div>
+
+            <button type="submit">Generate Story</button>
+        </form>
+
+        <div id="loading" style="display:none;">
+            <p>Generating story, please wait...</p>
+            <div class="spinner"></div>
+        </div>
+
+        <div id="storyValidation" style="display:none;">
+            <h2>Generated Story</h2>
+            <div id="validationStatus" class="validation-status"></div>
+            <h3 id="storyTitleOutput" style="display:none; margin-top: 15px; margin-bottom: 5px; text-align: center;"></h3>
+            <div id="storyOutput" class="story-text" style="display:none;"></div> <!-- Initially hidden for multiple stories -->
+            <div class="story-controls" style="display:none;">
+                <button id="approveStory" class="btn-approve">✓ Approve & Generate Audio</button>
+                <button id="editStory" class="btn-edit">✏️ Edit Story</button>
+                <button id="regenerateStory" class="btn-regenerate">🔄 Regenerate Story</button>
+            </div>
+            <div id="storyEditor" style="display:none;" class="story-editor">
+                <h3>Edit Story</h3>
+                <textarea id="storyTextarea" rows="10"></textarea>
+                <div class="editor-controls">
+                    <button id="saveStoryEdit" class="btn-approve">✓ Save & Generate Audio</button>
+                    <button id="cancelEdit" class="btn-cancel">✗ Cancel</button>
+                </div>
+            </div>
+            <div id="cardCreationControls" style="display:none; margin-top: 20px;">
+                <button id="createCardFileBtn" class="btn-action">Create Batch Card File (.json)</button>
+            </div>
+        </div>
+
+        <div id="audioGeneration" style="display:none;">
+            <p>Generating audio, please wait...</p>
+            <div class="spinner"></div>
+        </div>
+
+        <div id="results" style="display:none;">
+            <h2>🎧 Generated Audiobook</h2>
+            <div id="audioOutput">
+                <audio id="audioPlayer" controls style="display:none; width: 100%; margin-top: 10px;">
+                    <source id="audioSource" src="" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            <p id="errorOutput" class="error-text"></p>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

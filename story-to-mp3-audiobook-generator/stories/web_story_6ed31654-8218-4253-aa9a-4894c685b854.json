@@ -1,0 +1,15 @@
+{
+    "id": "web_6ed31654-8218-4253-aa9a-4894c685b854",
+    "prompt_text": "cacca parlante che va a scuola a palermo",
+    "age_target": 5,
+    "num_words_target": 200,
+    "language": "it-IT",
+    "voice_requested": null,
+    "stories": [
+        {
+            "id": "1",
+            "title": "Una storia su cacca parlante che va a scuola a palermo",
+            "text": "C'era una volta una cacca parlante di nome Ciccio che viveva in una piccola città di Palermo. Un giorno, Ciccio decise di andare a scuola per imparare cose nuove e divertenti.\n\nQuando arrivò alla scuola, tutti i bambini si stupirono di vedere una cacca che poteva parlare! Ma Ciccio non si sentì a disagio, era lì per imparare e divertirsi.\n\nDurante la lezione di matematica, Ciccio dimostrò di essere molto bravo a contare fino a dieci con i suoi piccoli \"cacca-diti\". Durante la lezione di storia, raccontò storie divertenti su come le cacche erano nate nel mondo.\n\nAlla fine della giornata, la maestra disse a Ciccio che era stato un bravissimo alunno e che poteva tornare a scuola quando voleva. Ciccio era così felice che iniziò a saltellare di gioia!\n\nE così, Ciccio continuò ad andare a scuola a Palermo, imparando sempre cose nuove e divertenti, e diventando l'amico speciale di tutti i bambini. E vissero tutti felici e contenti. Fine."
+        }
+    ]
+}

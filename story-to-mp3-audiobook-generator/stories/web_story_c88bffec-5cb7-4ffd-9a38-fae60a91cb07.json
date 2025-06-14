@@ -1,0 +1,15 @@
+{
+    "id": "web_c88bffec-5cb7-4ffd-9a38-fae60a91cb07",
+    "prompt_text": "cacca parlante che va a scuola a palermo",
+    "age_target": 5,
+    "num_words_target": 200,
+    "language": "it-IT",
+    "voice_requested": null,
+    "stories": [
+        {
+            "id": "1",
+            "title": "Una storia su cacca parlante che va a scuola a palermo",
+            "text": "C'era una volta una cacca parlante di nome Ciuffo che viveva in una piccola città di Palermo. Ciuffo era diverso dalle altre cacche perché poteva parlare e pensare come un essere umano.\n\nUn giorno, Ciuffo decise di andare a scuola per imparare tante cose interessanti. Appena arrivò alla scuola di Palermo, tutti i bambini rimasero sorpresi nel vedere una cacca parlante! Ma Ciuffo non si preoccupò, sorrideva a tutti e diceva \"Ciao!\".\n\nDurante la lezione, Ciuffo imparò a fare i conti, a leggere e a scrivere. I bambini erano affascinati dalle sue capacità e diventarono tutti amici di Ciuffo.\n\nAlla fine della giornata, Ciuffo tornò a casa felice e pieno di nuove conoscenze. Aveva imparato tante cose divertenti e si sentiva orgoglioso di sé stesso.\n\nDa quel giorno, Ciuffo continuò ad andare a scuola e diventò il migliore amico di tutti i bambini di Palermo. E vissero tutti felici e contenti imparando insieme ogni giorno."
+        }
+    ]
+}

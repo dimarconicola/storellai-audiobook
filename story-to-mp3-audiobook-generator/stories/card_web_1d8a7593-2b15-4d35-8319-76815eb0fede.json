@@ -1,0 +1,28 @@
+{
+    "id": "web_1d8a7593-2b15-4d35-8319-76815eb0fede",
+    "character": "Popò, una cacca curiosa e un po' birichina, che ha imparato a parlare e sogna di vivere avventure incredibili.",
+    "location": "La colorata e rumorosa città di Palermo, in Sicilia. Avventure a scuola.",
+    "stories": [
+        {
+            "id": 1,
+            "title": "La Sorpresa del Mercato di Ballarò",
+            "tone": "calmo",
+            "length_words": 94,
+            "text": "Popò si trovava tra le bancarelle colorate del Mercato di Ballarò, a Palermo. Curiosava tra i carciofi e i pomodori, quando notò una cesta scintillante. \"Cos'è?\" si chiese, avvicinandosi piano. Dentro c'era una mappa antica con disegni di tesori e pasticcini! Popò, con un sorrisetto birichino, decise di seguirla. Mentre si spostava tra le bancarelle, ogni passo era una scoperta: olive danzanti, melanzane che raccontavano storie. Alla fine, trovò un baule, ma la vera sorpresa era la gentilezza della gente che gli offriva sorrisi e dolcetti. \"Che avventura calma e dolce!\" pensò Popò, felice."
+        },
+        {
+            "id": 2,
+            "title": "Il Ballo Segreto nel Vicolo",
+            "tone": "tenero",
+            "length_words": 95,
+            "text": "Popò stava saltellando allegramente nel cortile della scuola quando, all'improvviso, sentì un suono misterioso provenire da un vicolo. \"Cosa potrebbe essere?\" si chiese, con gli occhietti curiosi spalancati. Decise di seguire il suono e, con grande sorpresa, scoprì un gruppo di piccoli animali che ballavano allegramente sotto la luna. Era un ballo segreto!\n\n\"Posso unirmi a voi?\" chiese timidamente Popò. Gli animali annuirono con entusiasmo e Popò si unì alla danza, sentendosi accettato e felice. Ma come poteva un vicolo nascondere un tale incanto? Forse, pensò Popò, i segreti si trovano nei posti più inaspettati."
+        },
+        {
+            "id": 3,
+            "title": "Popò e la Busonave Spaziale",
+            "tone": "avventuroso",
+            "length_words": 95,
+            "text": "Nella rumorosa città di Palermo, tra il profumo delle arancine e il vociare dei mercati, si nascondeva un piccolo segreto nella scuola di Via delle Stelle. Popò, una cacca curiosa e un po' birichina, aveva un sogno: salire sulla Busonave Spaziale nascosta nel cortile. Con un balzo, Popò saltò sulla navicella colorata di mille luci e, con un \"fiuuu\", partì verso le stelle. Mentre volava tra pianeti di cioccolato e comete zuccherate, Popò si sentì libero e felice. \"Che avventura!\" pensò, ridendo di gioia. Palermo divenne un puntino lontano, e il suo sogno finalmente realtà."
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "id": "web_7d62fdca-e7d9-4617-9baf-e0e1dff093ad",
+    "prompt_text": "cacca che parla e va a scuola a palermo",
+    "age_target": 5,
+    "num_words_target": 50,
+    "language": "it-IT",
+    "voice_requested": null,
+    "stories": [
+        {
+            "id": "1",
+            "title": "Una storia su cacca che parla e va a scuola a palermo",
+            "text": "C'era una volta una cacca molto speciale di nome Carlotta. Un giorno, Carlotta decise di andare a scuola a Palermo. Lungo il cammino, incontrò un amico gelato di fragola di nome Franco. Insieme, affrontarono avventure divertenti e impararono che l'amicizia può nascere anche tra cose diverse. Alla fine, Carlotta"
+        }
+    ]
+}

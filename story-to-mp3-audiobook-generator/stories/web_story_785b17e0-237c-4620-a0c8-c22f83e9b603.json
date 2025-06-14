@@ -1,0 +1,16 @@
+{
+    "id": "web_785b17e0-237c-4620-a0c8-c22f83e9b603",
+    "character_idea": "cacca che parla",
+    "context_location_idea": "va a scuola a palermo",
+    "age_target": 5,
+    "num_words_target": 50,
+    "language": "it-IT",
+    "voice_requested": null,
+    "stories": [
+        {
+            "id": "1",
+            "title": "Una storia su cacca che parla",
+            "text": "C'era una volta a Palermo una cacca che sapeva parlare. Un giorno, decise di andare a scuola per imparare cose nuove. Tutti ridevano, ma lei non si arrese. In classe, aiutò un compagno in difficoltà. La maestra sorrise e disse: \"Anche una cacca può essere gentile e intelligente!\" E tutti applaudivano felici."
+        }
+    ]
+}

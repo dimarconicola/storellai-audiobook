@@ -1,0 +1,15 @@
+{
+    "id": "web_b5e401cd-618e-44fa-8dc6-8a98b9a79875",
+    "prompt_text": "cacca che parla e va a scuola a palermo",
+    "age_target": 5,
+    "num_words_target": 50,
+    "language": "it-IT",
+    "voice_requested": null,
+    "stories": [
+        {
+            "id": "1",
+            "title": "Una storia su cacca che parla e va a scuola a palermo",
+            "text": "C'era una volta una cacca che parlava di nome Ciuffo. Un giorno, Ciuffo decise di andare a scuola a Palermo. Tutti rimasero sorpresi! In classe, Ciuffo aiutò gli amici, facendo ridere tutti. Alla fine, insegnò che anche le cose strane possono essere speciali. Buonanotte, Ciuffo!"
+        }
+    ]
+}

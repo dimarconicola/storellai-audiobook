@@ -1,0 +1,15 @@
+{
+    "id": "web_82430748-0452-48da-a08a-ad4a9cd2bc1c",
+    "prompt_text": "cacca che parla e va a scuola a palermo",
+    "age_target": 5,
+    "num_words_target": 50,
+    "language": "it-IT",
+    "voice_requested": null,
+    "stories": [
+        {
+            "id": "1",
+            "title": "Una storia su cacca che parla e va a scuola a palermo",
+            "text": "Once upon a time in Palermo, Italy, there was a talking poo named Pippo. Pippo was curious and dreamed of going to school. With a big smile, he rolled through the streets to the school. The children were amazed! Pippo taught them that even unexpected friends can bring joy. And so, Pippo became the beloved class mascot, teaching everyone the power of acceptance and friendship. The end."
+        }
+    ]
+}
