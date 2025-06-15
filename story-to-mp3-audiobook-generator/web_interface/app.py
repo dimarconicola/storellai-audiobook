@@ -57,7 +57,7 @@ app.secret_key = secrets.token_hex(16) # Added secret key for session management
 # Define base directories relative to this app.py file
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.abspath(os.path.join(BASE_DIR, '..')) # This is 'story-to-mp3-audiobook-generator'
-STORIES_OUTPUT_DIR = os.path.join(PROJECT_ROOT, 'stories')
+STORIES_OUTPUT_DIR = os.path.join(PROJECT_ROOT, 'storiesoffline')  # Save generated story JSON files to 'storiesoffline' directory
 # Output audio directly into a web-accessible folder if possible, or serve it
 # For simplicity, we'll create a dedicated folder for web-generated audio
 # that can be served by Flask.
