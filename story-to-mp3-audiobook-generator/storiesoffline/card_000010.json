@@ -1,0 +1,31 @@
+{
+    "id": "000010",
+    "character": "Popò, una cacca curiosa e un po' birichina, che ha imparato a parlare e sogna di vivere avventure incredibili.",
+    "location": "La colorata e rumorosa città di Palermo, in Sicilia. Avventure a scuola.",
+    "stories": [
+        {
+            "id": 1,
+            "title": "Popò e il Mistero del Gelato Parlante",
+            "tone": "calmo",
+            "length_words": 97,
+            "audio": "audio/000010/1.mp3",
+            "text": "A Palermo, tra le vie animate e profumate di cannoli, Popò, una cacca curiosa e un po' birichina, stava ascoltando una strana voce. \"Sono un gelato parlante!\", diceva una coppa di gelato al pistacchio. Popò si avvicinò cauto, curioso di questo mistero. \"Gelato parlante? Ma come?\" chiese. Il gelato spiegò che era stanco di sciogliersi sempre al sole senza poter dire nulla. \"Vorrei raccontare storie!\" disse il gelato. Popò, sereno, decise di aiutare il gelato a trovare un posto all'ombra. E così, sotto un ficus gigante, il gelato iniziò a raccontare storie fresche mentre Popò ascoltava felice."
+        },
+        {
+            "id": 2,
+            "title": "La Danza dei Tappi di Bottiglia",
+            "tone": "divertente",
+            "length_words": 100,
+            "audio": "audio/000010/2.mp3",
+            "text": "Popò stava osservando il mondo dal suo piccolo angolo nel parco di Palermo. Cosa poteva mai combinare una cacca curiosa in una città così vivace? Improvvisamente, udì un suono strano: \"Pling, plong, pling!\" Erano tappi di bottiglia che saltellavano allegri sulla pavimentazione! Ma com'era possibile? Forse i tappi avevano deciso di fare una danza speciale? Popò non poteva resistere alla curiosità e si avvicinò. \"Chi avrebbe mai pensato che i tappi potessero ballare?\" si chiese. Unendosi al ritmo, Popò si mise a ballare insieme a loro, ridendo e girando su se stesso. Chissà quale altra sorpresa lo attendeva dietro l'angolo?"
+        },
+        {
+            "id": 3,
+            "title": "Popò e l'Orchestra dei Gattini Tapparella",
+            "tone": "tenero",
+            "length_words": 95,
+            "audio": "audio/000010/3.mp3",
+            "text": "Nel cuore vibrante di Palermo, tra palazzi colorati e strade piene di vita, si nascondeva un piccolo vicolo dove i gatti suonavano in un'orchestra. Popò, una cacca curiosa e un po' birichina, li guardava affascinato. I gattini Tapparella, con baffi vibranti e code che danzavano al ritmo del vento, suonavano melodie dolci che riempivano l'aria di magia. Popò desiderava tanto unirsi a loro, e con un piccolo salto, si avvicinò timidamente. I gattini lo accolsero con un miagolio gentile, e insieme crearono una sinfonia di risate e note tenere, sotto il cielo azzurro della Sicilia."
+        }
+    ]
+}
