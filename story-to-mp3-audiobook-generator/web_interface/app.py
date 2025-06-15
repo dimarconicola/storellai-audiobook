@@ -315,58 +315,79 @@ def api_generate_audio_for_story():
 @app.route('/api/create_card_file', methods=['POST'])
 def api_create_card_file():
     try:
-        # card_id is expected to be the numeric string like "000000" from the session
         current_card_data = session.get('current_card_data')
         if not current_card_data:
             return jsonify({"error": "No card data found in session. Please generate stories first."}), 400
 
-        card_id = current_card_data.get('card_id') # This will be "000000", "000001", etc.
+        card_id = current_card_data.get('card_id')
         if not card_id:
             return jsonify({"error": "Card ID not found in session data."}), 400
 
-        # Construct filename with "card_" prefix
-        output_filename = f"card_{card_id}.json" # e.g., card_000000.json
-        output_filepath = os.path.join(STORIES_OUTPUT_DIR, output_filename)
+        # Prepare audio output directory: src/audio/{card_id}/
+        audio_output_dir = os.path.join(PROJECT_ROOT, 'src', 'audio', card_id)
+        if os.path.exists(audio_output_dir):
+            # Never overwrite an existing folder
+            return jsonify({"error": f"Audio folder for card {card_id} already exists. Please regenerate with a new card."}), 400
+        os.makedirs(audio_output_dir, exist_ok=False)
 
-        # Prepare data for JSON output, ensuring it matches card_000000.json structure
-        # The top-level "id" field should be the numeric card_id string
         output_data = {
-            "id": card_id, 
+            "id": card_id,
             "character": current_card_data.get("character"),
             "location": current_card_data.get("context_location"),
             "stories": []
         }
 
         for story_detail in current_card_data['stories_details']:
-            word_count = story_detail.get('validation', {}).get('word_count', current_card_data.get('num_words')) # Fallback to target
-            
+            word_count = story_detail.get('validation', {}).get('word_count', current_card_data.get('num_words'))
+            story_number = story_detail['story_number']
+            # Audio file path relative to project root
+            audio_filename = f"{story_number}.mp3"
+            audio_rel_path = f"audio/{card_id}/{audio_filename}"
+            audio_abs_path = os.path.join(audio_output_dir, audio_filename)
+
+            # Generate audio for this story (if not already generated)
+            from audiobook.tts import synthesize_speech
+            story_title = story_detail['title']
+            story_text = story_detail['text']
+            language = current_card_data.get('language')
+            tts_params = GOOGLE_TTS_VOICE_PARAMS.get(language, GOOGLE_TTS_VOICE_PARAMS.get(language.split('-')[0], GOOGLE_TTS_VOICE_PARAMS['default']))
+            selected_voice_name = current_card_data.get('voice_requested_for_card')
+            if not selected_voice_name:
+                if isinstance(tts_params['name'], list):
+                    selected_voice_name = tts_params['name'][0]
+                else:
+                    selected_voice_name = tts_params['name']
+            combined_text_for_tts = f"{story_title}. {story_text}"
+            success = synthesize_speech(
+                text=combined_text_for_tts,
+                language_code=language,
+                voice_name=selected_voice_name,
+                output_filename=audio_abs_path,
+                audio_config_params=AUDIO_CONFIG['mp3'],
+                ssml_gender_str=tts_params.get("ssml_gender", "NEUTRAL")
+            )
+            if not success:
+                return jsonify({"error": f"Speech synthesis failed for story {story_number}"}), 500
+
             output_data['stories'].append({
-                "id": story_detail['story_number'], # Use 1-indexed story_number as integer
+                "id": story_number,
                 "title": story_detail['title'],
                 "tone": story_detail['tone'],
-                "length_words": word_count, # Added actual word count per story
+                "length_words": word_count,
+                "audio": audio_rel_path,
                 "text": story_detail['text']
             })
-        
-        # File naming: use the card_id to ensure uniqueness and consistency
-        # The batch pipeline expects files like card_000000.json. We'll use card_<card_id>.json
+
         card_file_name = f"card_{current_card_data['card_id']}.json"
         card_json_path_abs = os.path.join(STORIES_OUTPUT_DIR, card_file_name)
-        
         with open(card_json_path_abs, 'w', encoding='utf-8') as f:
             json.dump(output_data, f, ensure_ascii=False, indent=4)
-        
         app.logger.info(f"Card file created: {card_json_path_abs}")
-
-        # Optionally, clear session data for this card after saving
-        # session.pop('current_card_data', None)
-
         return jsonify({
             "message": "Card file created successfully!",
-            "card_file_path": card_json_path_abs, # Server-side path
+            "card_file_path": card_json_path_abs,
             "card_file_name": card_file_name
         })
-
     except Exception as e:
         app.logger.error(f"Error in /api/create_card_file: {e}", exc_info=True)
         return jsonify({"error": f"An unexpected error occurred: {str(e)}"}), 500
