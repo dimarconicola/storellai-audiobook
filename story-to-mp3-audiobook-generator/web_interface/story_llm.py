@@ -152,7 +152,7 @@ def generate_story_titles_from_llm(age: int, character_idea: str, context_locati
     try:
         print(f"[OpenAI Title Gen] Generating {num_titles} titles. Prompt: {title_gen_prompt[:100]}...")
         completion = openai.chat.completions.create(
-            model="gpt-4o", 
+            model="gpt-3.5-turbo", 
             messages=[
                 {"role": "system", "content": system_message},
                 {"role": "user", "content": title_gen_prompt}
@@ -281,14 +281,15 @@ def generate_story_from_llm(age: int, character_idea: str, context_location_idea
     tone_instruction = f"The story MUST have a '{actual_tone}' tone. This means it should evoke feelings associated with '{actual_tone}'."
 
     user_prompt = (
-        f"{language_instruction}\\n\\n"
-        f"TARGET AUDIENCE: A {age}-year-old child.\\n\\n"
-        f"CHARACTER IDEA: {character_idea}\\n\\n"
-        f"CONTEXT/LOCATION IDEA: {context_location_idea}\\n\\n"
-        f"{title_prompt_segment}\\n\\n"
-        f"{variation_prompt_segment}\\n\\n"
-        f"{tone_instruction}\\n\\n"
-        f"STORY LENGTH: Approximately {num_words} words. Focus on a complete, coherent, and imaginative narrative that fully develops the premise of the given title, rather than exact word count.\\n\\n"
+        f"{language_instruction}\n\n"
+        f"TARGET AUDIENCE: A {age}-year-old child.\n\n"
+        f"CHARACTER IDEA: {character_idea}\n\n"
+        f"CONTEXT/LOCATION IDEA: {context_location_idea}\n\n"
+        f"IMPORTANT: The character and location descriptions above are for your reference only. Do NOT repeat or rephrase these descriptions verbatim in the story. Assume the reader already knows these details. Only mention character or location traits if they are relevant to the plot or action. Focus on new events, actions, and dialogue.\n\n"
+        f"{title_prompt_segment}\n\n"
+        f"{variation_prompt_segment}\n\n"
+        f"{tone_instruction}\n\n"
+        f"STORY LENGTH: Approximately {num_words} words. Focus on a complete, coherent, and imaginative narrative that fully develops the premise of the given title, rather than exact word count.\n\n"
         f"Please write the story now."
     )
 
@@ -296,7 +297,7 @@ def generate_story_from_llm(age: int, character_idea: str, context_location_idea
 
     try:
         completion = openai.chat.completions.create(
-            model="gpt-4o", 
+            model="gpt-3.5-turbo", 
             messages=[
                 {"role": "system", "content": system_message},
                 {"role": "user", "content": user_prompt}
@@ -403,6 +404,73 @@ def generate_multiple_stories(age: int, character_idea: str, context_location_id
     
     return stories_data
 
+def generate_story_from_title(title: str, age: int, character_idea: str, context_location_idea: str, language: str, tone: str, target_word_count: int) -> str:
+    """
+    Generates a story based on a given title, ensuring minimal repetition of prompt details.
+    """
+    lang_code_short = language.split('-')[0]
+    language_instruction = f"The story must be in {language} (e.g., for '{lang_code_short}')."
+
+    avoid_repetition_instruction_it = "Non ripetere dettagli esatti forniti nel prompt, come il colore dei capelli o descrizioni dell'ambiente."
+    avoid_repetition_instruction_en = "Do not repeat exact details provided in the prompt, such as hair color or setting descriptions."
+
+    if lang_code_short == "it":
+        story_gen_prompt = (
+            f"Sei un autore di storie per bambini CREATIVO. Scrivi una storia per un bambino di {age} anni basata sul titolo: '{title}'. "
+            f"La storia deve essere COMPLETAMENTE ORIGINALE e seguire un tono '{tone}'. {avoid_repetition_instruction_it} "
+            f"Usa il titolo come guida per creare una narrazione unica e interessante. La storia deve avere circa {target_word_count} parole."
+        )
+    else:  # Default to English
+        story_gen_prompt = (
+            f"You are a CREATIVE children's story writer. Write a story for a {age}-year-old child based on the title: '{title}'. "
+            f"The story must be COMPLETELY ORIGINAL and follow a '{tone}' tone. {avoid_repetition_instruction_en} "
+            f"Use the title as a guide to create a unique and engaging narrative. The story should be around {target_word_count} words."
+        )
+
+    system_message = (
+        "You are an assistant that generates exceptionally creative, concise, and diverse children's stories based on provided titles. "
+        "Avoid repeating details from the prompt verbatim and focus on creating engaging and original narratives."
+    )
+
+    try:
+        print(f"[OpenAI Story Gen] Generating story for title: {title[:50]}...")
+        completion = openai.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": system_message},
+                {"role": "user", "content": story_gen_prompt}
+            ],
+            max_tokens=target_word_count * 2,  # Allow for flexibility in word count
+            temperature=0.8  # Balance creativity and coherence
+        )
+        story = completion.choices[0].message.content.strip()
+
+        if len(story.split()) < target_word_count * 0.8:  # Ensure story length is reasonable
+            print(f"[OpenAI Story Gen] Warning: Generated story is shorter than expected. Length: {len(story.split())} words.")
+
+        return story
+
+    except Exception as e:
+        print(f"[OpenAI Story Gen] Error generating story: {e}")
+        return f"Error: Unable to generate story for title '{title}' due to {type(e).__name__}."
+
+# Example usage of the chunked generation strategy
+def generate_stories_with_titles(age: int, character_idea: str, context_location_idea: str, language: str, tone: str, target_word_count: int, num_stories: int):
+    """
+    Generates multiple stories by first creating titles and then generating stories for each title.
+    """
+    titles = generate_story_titles_from_llm(age, character_idea, context_location_idea, language, num_stories)
+    stories = []
+
+    for i, title in enumerate(titles):
+        story = generate_story_from_title(title, age, character_idea, context_location_idea, language, tone, target_word_count)
+        stories.append({
+            "title": title,
+            "story": story
+        })
+
+    return stories
+
 # Example usage (for testing this module directly):
 if __name__ == '__main__':
     # Ensure you have OPENAI_API_KEY set in your environment to test this
@@ -464,3 +532,31 @@ if __name__ == '__main__':
         for story_data in multiple_stories_mixed:
             print(f"\nStory {story_data['story_number']} (Plot: {story_data['variation']['plot_seed']}, Tone: {story_data['tone']}):")
             print(story_data['text'])
+
+        # Test story generation from title
+        print("\n--- Sample Generated Story from Title ---")
+        title_based_story = generate_story_from_title(
+            title="Il viaggio straordinario di Leo il leone",
+            age=5,
+            character_idea="Leo il leone coraggioso",
+            context_location_idea="la giungla misteriosa",
+            language="it-IT",
+            tone="avventuroso",
+            target_word_count=150
+        )
+        print(title_based_story)
+
+        # Test chunked story generation strategy
+        print("\n--- Sample Generated Stories with Chunked Strategy ---")
+        chunked_stories_result = generate_stories_with_titles(
+            age=6,
+            character_idea="Pippo il pinguino avventuroso",
+            context_location_idea="l'Antartide incantata",
+            language="it-IT",
+            tone="divertente",
+            target_word_count=100,
+            num_stories=3
+        )
+        for story_data in chunked_stories_result:
+            print(f"\nTitle: {story_data['title']}")
+            print(story_data['story'])
